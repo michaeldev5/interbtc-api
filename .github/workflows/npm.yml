@@ -13,7 +13,7 @@ jobs:
             - name: setup node
               uses: actions/setup-node@v4
               with:
-                  node-version: "18"
+                  node-version-file: '.nvmrc'
                   registry-url: "https://registry.npmjs.org"
                   always-auth: true
             - run: corepack enable
@@ -32,6 +32,6 @@ jobs:
               run: |
                   git-chglog --output CHANGELOG.md $GITHUB_REF_NAME
             - name: Release
-              uses: softprops/action-gh-release@v1
+              uses: softprops/action-gh-release@v2
               with:
                   body_path: CHANGELOG.md
